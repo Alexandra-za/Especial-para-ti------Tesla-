@@ -1,0 +1,78 @@
+body{
+    background-color: #888fcb;
+    color: rgba(255, 255, 255, 0.747);
+    font-family: Geneva;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1{
+    color: #000000bc;
+}
+
+/* flores cayendo */
+.petalo{
+    position: fixed;
+    width: 40px;
+    top: -60px;
+    animation: caer linear infinite;
+}
+
+/* animación de caída */
+@keyframes caer{
+    0%{
+        transform: translateY(-100px);
+    }
+
+    100%{
+        transform: translateY(110vh);
+    }
+}
+
+/* posiciones diferentes */
+.petalo:nth-child(1){
+    left: 10%;
+    animation-duration: 6s;
+}
+
+.petalo:nth-child(2){
+    left: 30%;
+    animation-duration: 8s;
+}
+
+.petalo:nth-child(3){
+    left: 50%;
+    animation-duration: 7s;
+}
+
+.petalo:nth-child(4){
+    left: 70%;
+    animation-duration: 9s;
+}
+
+.petalo:nth-child(5){
+    left: 90%;
+    animation-duration: 6s;
+}
+
+.sabicat{
+    display: block;
+    margin: 20px auto;
+    width: 120px;
+    animation: colgar 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+@keyframes colgar{
+    0%{
+        transform: rotate(-3deg);
+    }
+
+    50%{
+        transform: rotate(3deg);
+    }
+
+    100%{
+        transform: rotate(-3deg);
+    }
+}
