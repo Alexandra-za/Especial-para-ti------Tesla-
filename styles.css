@@ -1,78 +1,68 @@
 body{
-    background-color: #888fcb;
-    color: rgba(255, 255, 255, 0.747);
+    background-color: #4b92b1;
+    color: rgba(7, 7, 7, 0.565);
     font-family: Geneva;
     text-align: center;
-    overflow: hidden;
 }
 
 h1{
-    color: #000000bc;
+    color: #595d6dad;
 }
 
-/* flores cayendo */
+/* PETALOS */
+
 .petalo{
     position: fixed;
+    top: -50px;
     width: 40px;
-    top: -60px;
-    animation: caer linear infinite;
+    pointer-events: none;
+
+    animation: caer 10s linear infinite;
+
+    opacity: 0.9;
+    filter: drop-shadow(0px 0px 5px white);
 }
 
-/* animación de caída */
 @keyframes caer{
     0%{
-        transform: translateY(-100px);
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
     }
 
     100%{
-        transform: translateY(110vh);
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.8;
     }
 }
 
-/* posiciones diferentes */
-.petalo:nth-child(1){
-    left: 10%;
-    animation-duration: 6s;
-}
+/* posiciones diferentes para cubrir toda la pantalla */
 
-.petalo:nth-child(2){
-    left: 30%;
-    animation-duration: 8s;
-}
+.petalo:nth-child(2){ left:5%; animation-delay:0s;}
+.petalo:nth-child(3){ left:15%; animation-delay:2s;}
+.petalo:nth-child(4){ left:25%; animation-delay:4s;}
+.petalo:nth-child(5){ left:35%; animation-delay:1s;}
+.petalo:nth-child(6){ left:45%; animation-delay:3s;}
+.petalo:nth-child(7){ left:55%; animation-delay:5s;}
+.petalo:nth-child(8){ left:65%; animation-delay:6s;}
+.petalo:nth-child(9){ left:75%; animation-delay:7s;}
+.petalo:nth-child(10){ left:85%; animation-delay:8s;}
+.petalo:nth-child(11){ left:95%; animation-delay:9s;}
 
-.petalo:nth-child(3){
-    left: 50%;
-    animation-duration: 7s;
-}
 
-.petalo:nth-child(4){
-    left: 70%;
-    animation-duration: 9s;
-}
-
-.petalo:nth-child(5){
-    left: 90%;
-    animation-duration: 6s;
-}
+/* IMAGEN SABICAT */
 
 .sabicat{
     display: block;
     margin: 20px auto;
     width: 120px;
+
     animation: colgar 3s ease-in-out infinite;
+
     transform-origin: top center;
 }
 
 @keyframes colgar{
-    0%{
-        transform: rotate(-3deg);
-    }
-
-    50%{
-        transform: rotate(3deg);
-    }
-
-    100%{
-        transform: rotate(-3deg);
-    }
+    0%{ transform: rotate(-3deg); }
+    50%{ transform: rotate(3deg); }
+    100%{ transform: rotate(-3deg); }
 }
