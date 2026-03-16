@@ -1,79 +1,134 @@
-body{
-    background-color: #88b4c6;
+body {
+    background-color: #4d8ba4;
     color: rgba(212, 193, 193, 0.966);
     font-family: Geneva;
     text-align: center;
 }
 
-h1{
-    color: #595d6dad;
+h1 {
+    color: #000000;
 }
 
-/* PETALOS */
+/* Imagen fija */
+.sabicat {
+    width: 200px;
+    display: block;
+    margin: 20px auto;
+    /* Animación de balanceo */
+    animation: balanceo 3s ease-in-out infinite;
+}
 
-.petalo{
+/* Animación de balanceo izquierda-derecha */
+@keyframes balanceo {
+    0%   { transform: rotate(-10deg); }
+    50%  { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+}
+
+/* Pétalos */
+.petalo {
     position: fixed;
     top: -50px;
     width: 40px;
     pointer-events: none;
-
     animation: caer 10s linear infinite;
-
     opacity: 0.9;
     filter: drop-shadow(0px 0px 5px white);
 }
 
-@keyframes caer{
-    0%{
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 1;
+/* Animación de caída */
+@keyframes caer {
+    0% {
+        transform: translateY(0) rotate(0deg);
     }
-
-    100%{
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0.8;
+    100% {
+        transform: translateY(100vh) rotate(360deg);
     }
 }
 
-/* posiciones diferentes para cubrir toda la pantalla */
+/* Distribución horizontal y variación usando nth-of-type */
+.petalo:nth-of-type(1) { left: 5%;  animation-duration: 9s;  animation-delay: 1s; }
+.petalo:nth-of-type(2) { left: 15%; animation-duration: 12s; animation-delay: 3s; }
+.petalo:nth-of-type(3) { left: 25%; animation-duration: 10s; animation-delay: 2s; }
+.petalo:nth-of-type(4) { left: 40%; animation-duration: 11s; animation-delay: 4s; }
+.petalo:nth-of-type(5) { left: 55%; animation-duration: 13s; animation-delay: 1s; }
+.petalo:nth-of-type(6) { left: 70%; animation-duration: 8s;  animation-delay: 2s; }
+.petalo:nth-of-type(7) { left: 85%; animation-duration: 14s; animation-delay: 3s; }
+.petalo:nth-of-type(8) { left: 95%; animation-duration: 12s; animation-delay: 5s; }
 
-.petalo:nth-child(2){ left:0%; animation-delay:0s;}
-.petalo:nth-child(3){ left:5%; animation-delay:2s;}
-.petalo:nth-child(4){ left:10%; animation-delay:4s;}
-.petalo:nth-child(5){ left:15%; animation-delay:1s;}
-.petalo:nth-child(6){ left:20%; animation-delay:3s;}
-.petalo:nth-child(7){ left:25%; animation-delay:2s;}
-.petalo:nth-child(8){ left:30%; animation-delay:6s;}
-.petalo:nth-child(9){ left:35%; animation-delay:7s;}
-.petalo:nth-child(10){ left:40%; animation-delay:4s;}
-.petalo:nth-child(11){ left:45%; animation-delay:9s;}
-.petalo:nth-child(2){ left:50%; animation-delay:0s;}
-.petalo:nth-child(3){ left:55%; animation-delay:2s;}
-.petalo:nth-child(4){ left:60%; animation-delay:4s;}
-.petalo:nth-child(5){ left:65%; animation-delay:1s;}
-.petalo:nth-child(6){ left:70%; animation-delay:3s;}
-.petalo:nth-child(7){ left:85%; animation-delay:2s;}
-.petalo:nth-child(8){ left:90%; animation-delay:6s;}
-.petalo:nth-child(9){ left:95%; animation-delay:7s;}
-.petalo:nth-child(10){ left:100%; animation-delay:4s;}
+/* Libro */
+.book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto; /* espacio debajo del sabicat */
+}
 
-
-
-
-/* IMAGEN SABICAT */
-
-.sabicat{
-    display: block;
+.page {
+    display: none; /* ocultar todas por defecto */
+    width: 600px;
+    border: 2px solid #ccc;
+    background-color: rgba(255,255,255,0.1);
     margin: 20px auto;
-    width: 120px;
-
-    animation: colgar 3s ease-in-out infinite;
-
-    transform-origin: top center;
+    justify-content: center;
 }
 
-@keyframes colgar{
-    0%{ transform: rotate(-3deg); }
-    50%{ transform: rotate(3deg); }
-    100%{ transform: rotate(-3deg); }
+.left, .right {
+    flex: 1;
+    padding: 20px;
+}
+
+.right img {
+    max-width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.right img:hover {
+    transform: scale(1.05);
+}
+
+button {
+    background-color: #595d6d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #4d8ba4;
+}
+
+.music-controls {
+  display: flex;
+  justify-content: center; /* centra los botones */
+  gap: 30px;               /* espacio entre ellos */
+  margin: 20px auto;       /* espacio debajo de sabicat */
+}
+
+.music-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.music-controls button img {
+  width: 50px;   /* ajusta tamaño de iconos */
+  height: 50px;
+  transition: transform 0.2s;
+}
+
+.music-controls button img:hover {
+  transform: scale(1.2); /* efecto al pasar el mouse */
+}
+
+/* Glow para sabicat mientras suena */
+.sabicat.glow {
+  filter: drop-shadow(0 0 20px white);
 }
