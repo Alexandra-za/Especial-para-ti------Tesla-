@@ -1,114 +1,125 @@
+/* Estilo general */
 body {
-    background-color: #4d8ba4;
-    color: rgba(212, 193, 193, 0.966);
-    font-family: Geneva;
-    text-align: center;
+  background-color: #4d8ba4;
+  color: rgba(193, 191, 207, 0.966);
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    color: #000000;
+  color: #000000df;
+  margin-top: 20px;
 }
 
-/* Imagen fija */
+/* Layout principal: dos columnas */
+.layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 30px;
+  padding: 0 40px;
+}
+
+/* Columna izquierda: libro */
+.left-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.book-container {
+  transform: scale(1.3); /* agranda el libro */
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.page {
+  display: none; /* ocultar todas por defecto */
+  width: 600px;
+  border: 2px solid #fbf3f3;
+  background-color: rgba(0, 0, 0, 0.055);
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.left, .right {
+  flex: 1;
+  padding: 20px;
+}
+
+.right img {
+  max-width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.right img:hover {
+  transform: scale(1.05);
+}
+
+/* Flechas de navegación del libro */
+.controls {
+  margin-top: 20px;
+}
+
+.controls button {
+  background-color: #595d6d;
+  color: rgba(169, 157, 157, 0.936);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.controls button:hover {
+  background-color: #4d8ba4;
+}
+
+/* Columna derecha: sabicat + música */
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Imagen sabicat */
 .sabicat {
-    width: 200px;
-    display: block;
-    margin: 20px auto;
-    /* Animación de balanceo */
-    animation: balanceo 3s ease-in-out infinite;
+  width: 200px;
+  display: block;
+  animation: balanceo 3s ease-in-out infinite;
 }
 
 /* Animación de balanceo izquierda-derecha */
 @keyframes balanceo {
-    0%   { transform: rotate(-10deg); }
-    50%  { transform: rotate(10deg); }
-    100% { transform: rotate(-10deg); }
+  0%   { transform: rotate(-10deg); }
+  50%  { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
 }
 
-/* Pétalos */
-.petalo {
-    position: fixed;
-    top: -50px;
-    width: 40px;
-    pointer-events: none;
-    animation: caer 10s linear infinite;
-    opacity: 0.9;
-    filter: drop-shadow(0px 0px 5px white);
+/* Glow para sabicat mientras suena */
+.sabicat.glow {
+  filter: drop-shadow(0 0 20px rgba(241, 187, 132, 0.937));
 }
 
-/* Animación de caída */
-@keyframes caer {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-    }
-}
-
-/* Distribución horizontal y variación usando nth-of-type */
-.petalo:nth-of-type(1) { left: 5%;  animation-duration: 9s;  animation-delay: 1s; }
-.petalo:nth-of-type(2) { left: 15%; animation-duration: 12s; animation-delay: 3s; }
-.petalo:nth-of-type(3) { left: 25%; animation-duration: 10s; animation-delay: 2s; }
-.petalo:nth-of-type(4) { left: 40%; animation-duration: 11s; animation-delay: 4s; }
-.petalo:nth-of-type(5) { left: 55%; animation-duration: 13s; animation-delay: 1s; }
-.petalo:nth-of-type(6) { left: 70%; animation-duration: 8s;  animation-delay: 2s; }
-.petalo:nth-of-type(7) { left: 85%; animation-duration: 14s; animation-delay: 3s; }
-.petalo:nth-of-type(8) { left: 95%; animation-duration: 12s; animation-delay: 5s; }
-
-/* Libro */
-.book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto; /* espacio debajo del sabicat */
-}
-
-.page {
-    display: none; /* ocultar todas por defecto */
-    width: 600px;
-    border: 2px solid #ccc;
-    background-color: rgba(255,255,255,0.1);
-    margin: 20px auto;
-    justify-content: center;
-}
-
-.left, .right {
-    flex: 1;
-    padding: 20px;
-}
-
-.right img {
-    max-width: 100%;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-.right img:hover {
-    transform: scale(1.05);
-}
-
-button {
-    background-color: #595d6d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #4d8ba4;
-}
-
+/* Controles de música */
 .music-controls {
   display: flex;
-  justify-content: center; /* centra los botones */
-  gap: 30px;               /* espacio entre ellos */
-  margin: 20px auto;       /* espacio debajo de sabicat */
+  justify-content: center;
+  gap: 30px;
+  margin: 20px auto;
 }
 
 .music-controls button {
@@ -119,16 +130,37 @@ button:hover {
 }
 
 .music-controls button img {
-  width: 50px;   /* ajusta tamaño de iconos */
+  width: 50px;
   height: 50px;
   transition: transform 0.2s;
 }
 
 .music-controls button img:hover {
-  transform: scale(1.2); /* efecto al pasar el mouse */
+  transform: scale(1.2);
 }
 
-/* Glow para sabicat mientras suena */
-.sabicat.glow {
-  filter: drop-shadow(0 0 20px white);
+/* Pétalos cayendo */
+.petalo {
+  position: fixed;
+  top: -50px;
+  width: 40px;
+  pointer-events: none;
+  animation: caer 10s linear infinite;
+  opacity: 0.9;
+  filter: drop-shadow(0px 0px 5px white);
 }
+
+@keyframes caer {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* Variación de pétalos */
+.petalo:nth-of-type(1) { left: 5%;  animation-duration: 9s;  animation-delay: 1s; }
+.petalo:nth-of-type(2) { left: 15%; animation-duration: 12s; animation-delay: 3s; }
+.petalo:nth-of-type(3) { left: 25%; animation-duration: 10s; animation-delay: 2s; }
+.petalo:nth-of-type(4) { left: 40%; animation-duration: 11s; animation-delay: 4s; }
+.petalo:nth-of-type(5) { left: 55%; animation-duration: 13s; animation-delay: 1s; }
+.petalo:nth-of-type(6) { left: 70%; animation-duration: 8s;  animation-delay: 2s; }
+.petalo:nth-of-type(7) { left: 85%; animation-duration: 14s; animation-delay: 3s; }
+.petalo:nth-of-type(8) { left: 95%; animation-duration: 12s; animation-delay: 5s; }
