@@ -44,8 +44,8 @@ h1 {
 .page {
   display: none; /* ocultar todas por defecto */
   width: 600px;
-  border: 2px solid #fbf3f3;
-  background-color: rgba(0, 0, 0, 0.055);
+  border: 2px solid #ffffffb1;
+  background-color: rgba(223, 206, 206, 0.181);
   margin: 20px auto;
   justify-content: center;
 }
@@ -72,8 +72,8 @@ h1 {
 }
 
 .controls button {
-  background-color: #595d6d;
-  color: rgba(169, 157, 157, 0.936);
+  background-color: #c7cad9;
+  color: rgba(120, 114, 114, 0.936);
   border: none;
   padding: 10px 20px;
   margin: 10px;
@@ -83,7 +83,7 @@ h1 {
 }
 
 .controls button:hover {
-  background-color: #4d8ba4;
+  background-color: #9fb4bd;
 }
 
 /* Columna derecha: sabicat + música */
